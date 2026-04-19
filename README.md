@@ -1,48 +1,71 @@
-overview for python task tracker com 103
+🔎 Program Overview
 
-This Python program is a comprehensive yet simple project task tracker designed for group projects, particularly useful for students collaborating on assignments.
-The program allows groups to organize, assign, and monitor tasks while tracking progress in a structured manner.
+This program is a task management system designed for a group project (COM 103). It helps organize tasks, assign them to members, track progress, and evaluate the overall project status.
 
-Features and Workflow:
+🧩 Main Purpose
 
-Predefined Tasks with Estimated Hours:
-The program comes with five common project tasks, each with an estimated number of hours to help in planning:
-Program Logic / Coding (6h)
-UI / Output Formatting (3h)
-Testing & Debugging (2h)
-Documentation / README (2h)
-Presentation Slides (2h)
-This helps the group quickly understand the workload associated with each task.
-Interactive User Input:
-Users enter the project title and group name, personalizing the task tracker for their team.
-The program displays all task types with their corresponding numbers and estimated hours.
-Users can assign up to four tasks, specifying:
-Task number (or skip by entering 0)
-Member responsible for the task
-Task completion status (done or pending)
-Point-Based Task Completion:
-Completed tasks earn 2 points; pending tasks earn 1 point.
-Points are used to calculate the overall progress of the project.
-This point system provides a simple way to quantify productivity and contribution.
-Automated Progress Calculation:
-The program calculates progress as a percentage using the ratio of earned points to maximum possible points.
-Based on the calculated percentage, a project status label is automatically assigned:
-75% or higher → PROJECT READY!
-50–74% → ON TRACK.
-Below 50% → NEEDS MORE WORK!
-This gives the team a quick visual cue of the project’s completion level.
-Formatted Project Board Display:
-The program prints a well-organized project board showing:
-Task number, task name, estimated hours, assigned member, task status, and points earned
-Total points, maximum possible points, progress percentage, and overall project status
-This provides a clear and immediate overview of the group’s workload and progress, helping members stay coordinated.
-Error Handling and User-Friendly Design:
-The program gracefully handles invalid inputs (like non-numeric task numbers) by skipping the assignment slot, preventing crashes.
-Users can skip any assignment slot by entering 0, making the program flexible for teams with fewer than four tasks.
+The code allows users to:
 
-Purpose and Benefits:
+Select project tasks
+Assign them to group members
+Track completion status
+Calculate progress and performance
+⚙️ How the Program Works
+1. Task List Setup
 
-This program helps groups track task assignments and completion in a simple, organized, and visually clear way.
-It encourages accountability, as each member’s assignment and status are recorded.
-It provides instant feedback on progress, helping the team identify tasks that need attention before deadlines.
-It can be used as a foundation for more advanced project management tools or as a learning exercise for beginners in Python programming.
+A dictionary called tasks stores predefined project tasks with:
+
+Task name (e.g., Coding, UI)
+Estimated hours
+2. User Input
+
+The program asks for:
+
+Project title
+Group name
+3. Display Task Options
+
+It prints a list of available tasks with their corresponding numbers and estimated hours.
+
+4. Task Assignment Loop
+
+The program runs a loop (up to 4 tasks) where the user:
+
+Chooses a task number (or skips)
+Inputs member name
+Sets task status (done or pending)
+5. Point System
+Done task = 2 points
+Pending task = 1 point
+
+Points are added to compute overall performance.
+
+6. Progress Calculation
+
+The program calculates:
+
+Total assigned tasks
+Maximum possible points
+Progress percentage
+7. Project Status Evaluation
+
+Based on progress:
+
+75% and above → ✅ PROJECT READY!
+50%–74% → ⚠️ ON TRACK
+Below 50% → ❌ NEEDS MORE WORK
+8. Final Output
+
+It prints a structured task board, showing:
+
+Each task and assigned member
+Status and points
+Total progress and final project status
+🧠 Key Features
+Uses dictionary and list for data storage
+Applies loops and conditionals
+Includes input validation
+Tracks team performance in real time
+📌 Summary
+
+This program is a simple but effective project tracker that combines task assignment, scoring, and progress monitoring into one system—useful for group projects or classroom activities.
