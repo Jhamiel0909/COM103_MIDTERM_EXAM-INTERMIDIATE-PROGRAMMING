@@ -5,54 +5,63 @@ tasks = {
     4: ("Documentation / README", 2),
     5: ("Presentation Slides", 2)
 }
-project_title = input("Enter your project Title: ")
-group_name = input("Enter your group name: ")
 
-print("== Task Types ==")
+
+project_title = input("Project title: ")
+group_name = input("Group name: ")
+
+
+print("==========================================")
+print("   COM 103 PROJECT -- TASK TYPES")
+print("==========================================")
 for num, (task_name, hours) in tasks.items():
-    print(f"{num}. {task_name} ({hours}h)")
+    print(f" {num}. {task_name:<25} [{hours}h]")
+print("==========================================")
 
-assignment =[]
+
+assignment = []
 total_points = 0
 
 for i in range(1, 5):
-    print(f"Assignment Slot {i}")
-    try:
-        task_num = int(input("Enter task number (1–5) or 0 to skip: "))
-    except ValueError:
+    print(f"--- TASK {i} ---")
+    task_input = input("Task number (0 to skip): ")
+
+    
+    if task_input not in ["0", "1", "2", "3", "4", "5"]:
         print("Invalid input. Skipping this slot.")
         continue
 
+    task_num = int(task_input)
+
     if task_num == 0:
+        print("Slot skipped.")
         continue
 
-    if task_num in tasks:
-        member = input("Enter member name: ")
-        status = input("Enter task status (done/pending): ").strip().lower()
-        
-        if status == "done":
-            points = 2
-        else:
-            points = 1
+    member = input("Member name: ")
+    status = input("Status (done/pending): ").strip().lower()
 
-        total_point += points
-        assignment.append({
-            "task_num": task_num,
-            "task_name": tasks[task_num][0],
-            "hours": tasks[task_num][1],
-            "member": member,
-            "status": status,
-            "points": points
-        })
+    if status == "done":
+        points = 2
     else:
-        print("Invalid task number. Skipping this slot.")
+        points = 1
+
+    total_points += points
+
+    assignment.append({
+        "task_num": task_num,
+        "task_name": tasks[task_num][0],
+        "hours": tasks[task_num][1],
+        "member": member,
+        "status": status,
+        "points": points
+    })
+    print()  
+
+
 num_assigned = len(assignment)
 max_possible = num_assigned * 2
 
-if max_possible > 0:
-    progress = int((total_points / max_possible) * 100)
-else:
-    progress = 0  
+progress = int((total_points / max_possible) * 100) if max_possible > 0 else 0
 
 if progress >= 75:
     project_status = "PROJECT READY!"
@@ -61,23 +70,22 @@ elif progress >= 50:
 else:
     project_status = "NEEDS MORE WORK!"
 
-print("===== PROJECT BOARD =====")
-print(f"Project Title : {project_title}")
-print(f"Group Name    : {group_name}")
-print("Assigned Tasks: ")
 
-if assignment:
-    print(f"{'No.':<5}{'Task':<30}{'Hours':<8}{'Member':<15}{'Status':<10}{'Pts'}")
-    print("-" * 75)
+print("================================================")
+print(f"     {project_title} -- TASK BOARD")
+print("================================================")
+print(f"Project : {project_title}")
+print(f"Group   : {group_name}")
+print("------------------------------------------------")
 
-    for idx, task in enumerate(assignment, start=1):
-        print(f"{idx:<5}{task['task_name']:<30}{task['hours']:<8}{task['member']:<15}{task['status']:<10}{task['points']}")
-else:
-    print("No tasks assigned.")
+for idx, task in enumerate(assignment, start=1):
+    print(f"[{idx}] {task['task_name']:<25} [{task['hours']}h]")
+    print(f"    Assigned to : {task['member']}")
+    print(f"    Status      : {task['status']}")
+    print(f"    Points      : {task['points']} / 2\n")
 
-print("--------------------------")
-print(f"Total Points     : {total_points}")
-print(f"Max Possible     : {max_possible}")
-print(f"Progress         : {progress}%")
-print(f"Project Status   : {project_status}")
-print("==========================")
+print("------------------------------------------------")
+print(f"Points Earned   : {total_points} / {max_possible}")
+print(f"Progress        : {progress}%")
+print(f"Project Status  : {project_status}")
+print("================================================")
