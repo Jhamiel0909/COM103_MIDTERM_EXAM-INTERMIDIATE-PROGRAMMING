@@ -38,7 +38,7 @@ for i in range(1, 5):
         continue
 
     member = input("Member name: ")
-    status = input("Status (done/pending): ").strip().lower()
+    status = input("Status (done/pending): ").strip()
 
     if status == "done":
         points = 2
